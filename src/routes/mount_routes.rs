@@ -5,6 +5,7 @@ use crate::create_user;
 
 use axum::{routing::post, Router};
 use std::sync::Arc;
+use std::env;
 
 pub async fn mount_routes() {
 
@@ -20,7 +21,9 @@ pub async fn mount_routes() {
     .with_state(app_state);
 
   // serving our app
-  axum::Server::bind(&"0.0.0.0:3000".parse().unwrap())
+  let port = env::var("PORT").unwrap();
+  let address = format!("0.0.0.0:{}", port);
+  axum::Server::bind(&address.parse().unwrap())
     .serve(app.into_make_service())
     .await
     .unwrap();
