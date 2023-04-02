@@ -1,14 +1,13 @@
 use crate::connect_mongo;
-use crate::AppState;
 use crate::cors;
 use crate::create_user;
+use crate::AppState;
 
 use axum::{routing::post, Router};
-use std::sync::Arc;
 use std::env;
+use std::sync::Arc;
 
 pub async fn mount_routes() {
-
   // pulling in resources
   let db = connect_mongo().await;
   let app_state: Arc<AppState> = Arc::new(AppState { db: db });
@@ -27,5 +26,4 @@ pub async fn mount_routes() {
     .serve(app.into_make_service())
     .await
     .unwrap();
-
 }

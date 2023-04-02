@@ -9,11 +9,10 @@ use middleware::cors::cors;
 
 mod models;
 use models::app_state::AppState;
-use models::create_user_request::CreateUserRequest;
 
 mod routes;
-use routes::mount_routes::mount_routes;
 use routes::create_user::create_user;
+use routes::mount_routes::mount_routes;
 
 use dotenv::dotenv;
 

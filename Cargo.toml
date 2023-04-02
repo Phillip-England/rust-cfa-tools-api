@@ -7,8 +7,11 @@ edition = "2021"
 
 [dependencies]
 axum = { version = "0.6.12", features = ["headers"] }
+bcrypt = "0.14.0"
+data-encoding = "2.3.3"
 dotenv = "0.15.0"
 mongodb = "2.4.0"
+rand = "0.8.5"
 serde = { version = "1.0.159", features = ["serde_derive"] }
 tokio = { version = "1.27.0", features = ["macros", "rt-multi-thread"] }
 tower-http = { version = "0.4.0", features = ["cors"] }
